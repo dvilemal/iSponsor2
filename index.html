@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iSponsor - Plataforma de Apadrinamiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>iSponsor</h1>
+            <p>Plataforma de Apadrinamiento Social</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="welcome-section">
+                <h2>Bienvenido a iSponsor</h2>
+                <p>Conecta con niños y adultos mayores que necesitan tu apoyo</p>
+            </div>
+            
+            <div class="auth-buttons">
+                <button class="btn btn-primary" onclick="goToLogin()">Iniciar Sesión</button>
+                <button class="btn btn-secondary" onclick="goToRegister()">Registrarse</button>
+            </div>
+            
+            <div class="user-types">
+                <h3>Selecciona tu perfil:</h3>
+                <div class="type-cards">
+                    <div class="type-card" onclick="selectUserType('donador')">
+                        <h4>Donador</h4>
+                        <p>Quiero apadrinar y ayudar</p>
+                    </div>
+                    <div class="type-card" onclick="selectUserType('casa-hogar')">
+                        <h4>Casa Hogar</h4>
+                        <p>Represento una institución</p>
+                    </div>
+                    <div class="type-card" onclick="selectUserType('apadrinado')">
+                        <h4>Apadrinado</h4>
+                        <p>Recibo apoyo</p>
+                    </div>
+                    <div class="type-card" onclick="selectUserType('admin')">
+                        <h4>Administrador</h4>
+                        <p>Gestiono la plataforma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
