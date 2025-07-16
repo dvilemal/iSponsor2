@@ -134,6 +134,107 @@ const simulatedData = {
     ]
 };
 
+// Datos simulados para Casa Hogar
+let casaHogarData = {
+    perfil: {
+        nombre: "Casa Hogar San José",
+        email: "admin@casahogar-sanjose.org",
+        telefono: "555-0123",
+        direccion: "Av. Esperanza 123, Ciudad de México",
+        responsable: "Lic. María García"
+    },
+    apadrinados: [
+        {
+            id: 1,
+            nombre: "María González",
+            fechaNacimiento: "2016-03-15",
+            genero: "femenino",
+            estadoSalud: "Bueno",
+            escolaridad: "2do Primaria",
+            foto: "M",
+            estado: "activo",
+            fechaRegistro: "2024-01-15",
+            necesidades: "Educación básica y alimentación",
+            descripcion: "Le gusta dibujar y jugar fútbol"
+        },
+        {
+            id: 2,
+            nombre: "Carlos Rodríguez",
+            fechaNacimiento: "2009-08-22",
+            genero: "masculino",
+            estadoSalud: "Excelente",
+            escolaridad: "1ro Secundaria",
+            foto: "C",
+            estado: "activo",
+            fechaRegistro: "2024-02-10",
+            necesidades: "Material escolar y transporte",
+            descripcion: "Estudiante de secundaria, le gustan las matemáticas"
+        },
+        {
+            id: 3,
+            nombre: "Ana López",
+            fechaNacimiento: "1952-12-05",
+            genero: "femenino",
+            estadoSalud: "Requiere medicamentos",
+            escolaridad: "Primaria completa",
+            foto: "A",
+            estado: "activo",
+            fechaRegistro: "2024-01-20",
+            necesidades: "Medicamentos y cuidado médico",
+            descripcion: "Abuela cariñosa que necesita medicamentos"
+        }
+    ],
+    gastos: [
+        {
+            id: 1,
+            apadrinadoId: 1,
+            fecha: "2024-12-01",
+            monto: 200,
+            categoria: "alimentacion",
+            descripcion: "Compra de alimentos nutritivos",
+            comprobante: "FAC-001"
+        },
+        {
+            id: 2,
+            apadrinadoId: 1,
+            fecha: "2024-12-05",
+            monto: 150,
+            categoria: "educacion",
+            descripcion: "Útiles escolares y libros",
+            comprobante: "FAC-002"
+        },
+        {
+            id: 3,
+            apadrinadoId: 2,
+            fecha: "2024-12-03",
+            monto: 100,
+            categoria: "transporte",
+            descripcion: "Pasajes escolares",
+            comprobante: "FAC-003"
+        }
+    ],
+    contenido: [
+        {
+            id: 1,
+            apadrinadoId: 1,
+            tipo: "foto",
+            titulo: "En el colegio",
+            descripcion: "María en su clase de matemáticas",
+            fecha: "2024-12-10",
+            estado: "aprobado"
+        },
+        {
+            id: 2,
+            apadrinadoId: 2,
+            tipo: "carta",
+            titulo: "Carta de agradecimiento",
+            descripcion: "Carlos agradece el apoyo recibido",
+            fecha: "2024-12-08",
+            estado: "pendiente"
+        }
+    ]
+};
+
 // Funciones de navegación
 function goToPage(page, params = {}) {
     currentPage = page;
@@ -175,6 +276,18 @@ function goToPage(page, params = {}) {
             break;
         case 'informes':
             showInformes();
+            break;
+        case 'gestionar-apadrinados':
+            showGestionarApadrinados();
+            break;
+        case 'gestionar-donaciones':
+            showGestionarDonaciones();
+            break;
+        case 'comunicacion-donadores':
+            showComunicacionDonadores();
+            break;
+        case 'reportes-casa-hogar':
+            showReportesCasaHogar();
             break;
         default:
             showHomePage();
@@ -1372,138 +1485,25 @@ function showInformes() {
                             
                             <div style="margin-top: 15px;">
                                 <button class="btn btn-sm btn-primary" onclick="showMessage('Informe detallado simulado generado', 'success')">Ver Detalle</button>
-                                <button class="btn btn-sm btn-secondary" onclick="goToPage('mensajes', {apadrinadoId: ${apadrinamiento.apadrinadoId}})">Enviar Mensaje</button>
                             </div>
                         </div>
                     `).join('')}
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Logros Recientes (Simulados)</h3>
-                <div class="achievements-grid">
-                    <div class="achievement-item">
-                        <div class="achievement-icon" style="background: var(--success-color);">📚</div>
-                        <div class="achievement-content">
-                            <h4>María González completó curso de lectura</h4>
-                            <p>Hace 2 semanas</p>
-                            <span class="status-badge">Nuevo logro</span>
-                        </div>
-                    </div>
-                    
-                    <div class="achievement-item">
-                        <div class="achievement-icon" style="background: var(--primary-color);">🎓</div>
-                        <div class="achievement-content">
-                            <h4>Carlos Rodríguez obtuvo beca</h4>
-                            <p>Hace 1 mes</p>
-                            <span class="status-badge">Destacado</span>
-                        </div>
-                    </div>
-                    
-                    <div class="achievement-item">
-                        <div class="achievement-icon" style="background: var(--accent-color);">🏆</div>
-                        <div class="achievement-content">
-                            <h4>Ana López participó en concurso</h4>
-                            <p>Hace 3 semanas</p>
-                            <span class="status-badge">Participación</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Acciones Disponibles</h3>
-                <div style="text-align: center; margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="showMessage('Informe PDF simulado generado y descargado', 'success')">Descargar Informe PDF</button>
-                    <button class="btn btn-secondary" onclick="showMessage('Informe por email simulado enviado', 'success')">Enviar por Email</button>
                 </div>
             </div>
         </div>
     `;
 }
 
-function enviarMensajeDemo(event) {
-    event.preventDefault();
-    
-    const mensaje = document.getElementById('nuevo-mensaje').value.trim();
-    
-    if (!mensaje) {
-        showMessage('Por favor escribe un mensaje', 'error');
-        return;
-    }
-    
-    // Simular envío
-    showMessage('Enviando mensaje...', 'info');
-    
-    setTimeout(() => {
-        // Agregar mensaje al chat visualmente
-        const chatMessages = document.querySelector('.chat-messages');
-        if (chatMessages) {
-            const nuevoMensaje = document.createElement('div');
-            nuevoMensaje.className = 'message-item message-sent';
-            nuevoMensaje.innerHTML = `
-                <div class="message-content">
-                    <p>${mensaje}</p>
-                    <small>${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString().substring(0, 5)}</small>
-                </div>
-            `;
-            
-            chatMessages.appendChild(nuevoMensaje);
-            
-            // Scroll al final
-            const chatContainer = document.querySelector('.chat-container');
-            if (chatContainer) {
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-        }
-        
-        // Limpiar formulario
-        document.getElementById('nuevo-mensaje').value = '';
-        
-        showMessage('Mensaje enviado exitosamente (simulación)', 'success');
-        
-        // Simular respuesta automática después de unos segundos
-        setTimeout(() => {
-            if (document.querySelector('.chat-messages')) {
-                const respuestaAuto = document.createElement('div');
-                respuestaAuto.className = 'message-item message-received';
-                respuestaAuto.innerHTML = `
-                    <div class="message-content">
-                        <p>¡Gracias por tu mensaje! (Respuesta automática simulada)</p>
-                        <small>${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString().substring(0, 5)}</small>
-                    </div>
-                    <span class="unread-indicator">Nuevo</span>
-                `;
-                
-                document.querySelector('.chat-messages').appendChild(respuestaAuto);
-                
-                const chatContainer = document.querySelector('.chat-container');
-                if (chatContainer) {
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }
-            }
-        }, 3000);
-    }, 1500);
-}
+// Agregar después de la función goToPage (alrededor de la línea 120)
 
-function usarMensajePredefinido(mensaje) {
-    const textarea = document.getElementById('nuevo-mensaje');
-    if (textarea) {
-        textarea.value = mensaje;
-        textarea.focus();
-    }
-}
-
-// Funciones de eventos
-function handleLogin(event) {
-    event.preventDefault();
-    
-    // Acceso directo para prototipo - sin validaciones
-    currentUser = {
-        email: 'demo@isponsor.com',
-        nombre: 'Juan Pérez',
-        telefono: '555-1234',
-        direccion: 'Calle Principal 123'
+// Funciones para Casa Hogar
+function showCasaHogarDashboard() {
+    document.querySelector('.container').innerHTML = `
+        ${getCasaHogarNavbar()}
+        
+        <div class="main-content">
+            <div class="welcome-section">
+                <h2>Panel de Administración - ${casaHogarData.perfil.nombre}</h2>
     };
     
     showMessage('Inicio de sesión exitoso', 'success');
